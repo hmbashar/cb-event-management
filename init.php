@@ -43,3 +43,11 @@ function cbem_register_main_menu() {
 
 // Hook the menu registration function to the 'init' action
 add_action('init', 'cbem_register_main_menu');
+
+
+
+// Include the file with custom post type registration
+require_once(plugin_dir_path(__FILE__) . 'inc/cpt.php'); 
+
+// Include the file with custom taxonomy registration
+require_once(plugin_dir_path(__FILE__) . 'inc/taxonomy.php'); 
