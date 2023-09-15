@@ -34,7 +34,7 @@ function cbem_register_custom_post_types() {
             'name' => __('People', 'cbem'),
             'singular_name' => __('Person', 'cbem'),
         ),
-        'public' => true,
+        'public' => false,
         'has_archive' => true,
         'menu_icon' => 'dashicons-id-alt',
         'supports' => array('title', 'thumbnail', 'editor', 'post-attributes'),

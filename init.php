@@ -51,3 +51,10 @@ require_once(plugin_dir_path(__FILE__) . 'inc/cpt.php');
 
 // Include the file with custom taxonomy registration
 require_once(plugin_dir_path(__FILE__) . 'inc/taxonomy.php'); 
+
+
+// Include the file with custom metabox registration
+
+require_once(plugin_dir_path(__FILE__) . 'inc/csf/codestar-framework.php'); 
+
+require_once(plugin_dir_path(__FILE__) . 'inc/metabox.php'); 
