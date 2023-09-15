@@ -60,3 +60,4 @@ require_once(plugin_dir_path(__FILE__) . 'inc/taxonomy.php');
 require_once(plugin_dir_path(__FILE__) . 'inc/csf/codestar-framework.php'); 
 
 require_once(plugin_dir_path(__FILE__) . 'inc/metabox.php'); 
+require_once(plugin_dir_path(__FILE__) . 'inc/functions.php'); 
