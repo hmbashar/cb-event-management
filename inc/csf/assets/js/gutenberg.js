@@ -10,9 +10,9 @@
  */
 ( function( blocks, blockEditor, element, components ) {
 
-  if( !window.csf_gutenberg_blocks ) { return; }
+  if ( !window.csf_gutenberg_blocks ) { return; }
 
-  window.csf_gutenberg_blocks.forEach( function( block ) {
+  Object.values(window.csf_gutenberg_blocks).forEach( function( block ) {
 
     var registerBlockType = blocks.registerBlockType;
     var PlainText         = blockEditor.PlainText;
@@ -20,11 +20,11 @@
     var RawHTML           = element.RawHTML;
     var Button            = components.Button;
 
-    registerBlockType('csf-gutenberg-block/block-'+block.hash, {
+    registerBlockType(block.name, {
       title: block.gutenberg.title,
-      icon: block.gutenberg.icon,
-      category: block.gutenberg.category,
       description: block.gutenberg.description,
+      icon: block.gutenberg.icon || 'screenoptions',
+      category: block.gutenberg.category || 'widgets',
       keywords: block.gutenberg.keywords,
       supports: {
         html: false,
@@ -43,7 +43,7 @@
 
             createElement(Button, {
               'data-modal-id': block.modal_id,
-              'data-gutenberg-id': block.hash,
+              'data-gutenberg-id': block.name,
               className: 'is-secondary csf-shortcode-button',
               onClick: function () {
                 window.csf_gutenberg_props = props;
@@ -52,7 +52,7 @@
 
             createElement(PlainText, {
               placeholder: block.gutenberg.placeholder,
-              className: 'input-control',
+              className: 'input-control blocks-shortcode__textarea',
               onChange: function (value) {
                 props.setAttributes({
                   shortcode: value

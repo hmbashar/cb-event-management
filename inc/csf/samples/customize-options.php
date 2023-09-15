@@ -91,72 +91,9 @@ CSF::createSection( $prefix, array(
 // Create a section
 //
 CSF::createSection( $prefix, array(
-  'id'       => 'nested_panel',
-  'title'    => 'CSF - Nested Panels',
-  'priority' => 2,
-) );
-
-//
-// Create a section
-//
-CSF::createSection( $prefix, array(
-  'parent'   => 'nested_panel',
-  'title'    => 'Nested Panel 1',
-  'priority' => 3,
-  'fields'   => array(
-
-    array(
-      'id'    => 'opt-nested-text',
-      'type'  => 'text',
-      'title' => 'Text',
-    ),
-
-    array(
-      'id'    => 'opt-nested-textarea',
-      'type'  => 'textarea',
-      'title' => 'Textarea',
-    ),
-
-  ),
-) );
-
-//
-// Create a section
-//
-CSF::createSection( $prefix, array(
-  'parent'   => 'nested_panel',
-  'title'    => 'Nested Panel 2',
-  'priority' => 4,
-  'fields'   => array(
-
-    array(
-      'id'    => 'opt-nested-color-1',
-      'type'  => 'color',
-      'title' => 'Color 1',
-    ),
-
-    array(
-      'id'    => 'opt-nested-color-2',
-      'type'  => 'color',
-      'title' => 'Color 2',
-    ),
-
-    array(
-      'id'    => 'opt-nested-color-3',
-      'type'  => 'color',
-      'title' => 'Color 3',
-    ),
-
-  ),
-) );
-
-//
-// Create a section
-//
-CSF::createSection( $prefix, array(
   'id'       => 'fields',
   'title'    => 'CSF - Fields',
-  'priority' => 5,
+  'priority' => 2,
 ) );
 
 //
@@ -501,13 +438,21 @@ CSF::createSection( $prefix, array(
     array(
       'id'          => 'opt-select-15',
       'type'        => 'select',
+      'title'       => 'Select with locations',
+      'placeholder' => 'Select a location',
+      'options'     => 'locations',
+    ),
+
+    array(
+      'id'          => 'opt-select-16',
+      'type'        => 'select',
       'title'       => 'Select with sidebars',
       'placeholder' => 'Select a sidebar',
       'options'     => 'sidebars',
     ),
 
     array(
-      'id'          => 'opt-select-16',
+      'id'          => 'opt-select-17',
       'type'        => 'select',
       'title'       => 'Select with wp roles',
       'placeholder' => 'Select a role',
@@ -515,7 +460,7 @@ CSF::createSection( $prefix, array(
     ),
 
     array(
-      'id'          => 'opt-select-17',
+      'id'          => 'opt-select-18',
       'type'        => 'select',
       'title'       => 'Select with users',
       'placeholder' => 'Select a user',
@@ -523,7 +468,7 @@ CSF::createSection( $prefix, array(
     ),
 
     array(
-      'id'          => 'opt-select-18',
+      'id'          => 'opt-select-19',
       'type'        => 'select',
       'title'       => 'Select with post type',
       'placeholder' => 'Select a post type',
@@ -531,7 +476,7 @@ CSF::createSection( $prefix, array(
     ),
 
     array(
-      'id'          => 'opt-select-19',
+      'id'          => 'opt-select-20',
       'type'        => 'select',
       'title'       => 'Select with CPT (custom post type) posts',
       'placeholder' => 'Select a post',
@@ -542,7 +487,7 @@ CSF::createSection( $prefix, array(
     ),
 
     array(
-      'id'          => 'opt-select-20',
+      'id'          => 'opt-select-21',
       'type'        => 'select',
       'title'       => 'Select with CPT (custom post type) categories',
       'placeholder' => 'Select a category',
@@ -1263,6 +1208,74 @@ CSF::createSection( $prefix, array(
       )
     ),
 
+    array(
+      'id'       => 'opt-group-9',
+      'type'     => 'group',
+      'title'    => 'Group with custom titles',
+      'subtitle' => 'accordion_title_by => array( \'opt-name\', \'opt-surname\' )',
+      'accordion_title_by' => array( 'opt-name', 'opt-surname' ),
+      'fields' => array(
+        array(
+          'id'    => 'opt-name',
+          'type'  => 'text',
+          'title' => 'Name',
+        ),
+        array(
+          'id'    => 'opt-surname',
+          'type'  => 'text',
+          'title' => 'Surname',
+        ),
+        array(
+          'id'    => 'opt-textarea',
+          'type'  => 'textarea',
+          'title' => 'Textarea',
+        ),
+      ),
+      'default' => array(
+        array(
+          'opt-name'     => 'John',
+          'opt-surname'  => 'Doe',
+          'opt-textarea' => 'Textarea 1',
+        ),
+        array(
+          'opt-name'     => 'Jane',
+          'opt-surname'  => 'Doe',
+          'opt-textarea' => 'Textarea 1',
+        ),
+      )
+    ),
+
+    array(
+      'id'       => 'opt-group-10',
+      'type'     => 'group',
+      'title'    => 'Group with custom titles and prefix',
+      'subtitle' => 'accordion_title_by => array( \'opt-text\', \'opt-textarea\' )<br />accordion_title_by_prefix => \' | \'',
+      'accordion_title_by'        => array( 'opt-text', 'opt-textarea' ),
+      'accordion_title_by_prefix' => ' | ',
+      'fields' => array(
+        array(
+          'id'    => 'opt-text',
+          'type'  => 'text',
+          'title' => 'Title',
+        ),
+        array(
+          'id'    => 'opt-textarea',
+          'type'  => 'textarea',
+          'title' => 'Textarea',
+        ),
+      ),
+      'default' => array(
+        array(
+          'opt-text'     => 'Text 1',
+          'opt-textarea' => 'Textarea 1',
+        ),
+        array(
+          'opt-text'     => 'Text 2',
+          'opt-textarea' => 'Textarea 1',
+        ),
+      )
+    ),
+
   )
 ) );
 
@@ -1674,14 +1687,21 @@ CSF::createSection( $prefix, array(
     ),
 
     array(
-      'id'          => 'opt-upload-2',
+      'id'      => 'opt-upload-2',
+      'type'    => 'upload',
+      'title'   => 'Upload with preview',
+      'preview' => true,
+    ),
+
+    array(
+      'id'          => 'opt-upload-3',
       'type'        => 'upload',
       'title'       => 'Upload with placeholder',
       'placeholder' => 'http://'
     ),
 
     array(
-      'id'           => 'opt-upload-3',
+      'id'           => 'opt-upload-4',
       'type'         => 'upload',
       'title'        => 'Upload with only image type',
       'library'      => 'image',
@@ -1689,7 +1709,7 @@ CSF::createSection( $prefix, array(
     ),
 
     array(
-      'id'           => 'opt-upload-4',
+      'id'           => 'opt-upload-5',
       'type'         => 'upload',
       'title'        => 'Upload with only video type',
       'library'      => 'video',
@@ -1697,13 +1717,12 @@ CSF::createSection( $prefix, array(
     ),
 
     array(
-      'id'           => 'opt-upload-5',
+      'id'           => 'opt-upload-6',
       'type'         => 'upload',
       'title'        => 'Upload with only audio type',
       'library'      => 'audio',
       'button_title' => 'Upload Audio',
     ),
-
   )
 ) );
 
@@ -2747,6 +2766,35 @@ CSF::createSection( $prefix, array(
 ) );
 
 //
+// Field: link
+//
+CSF::createSection( $prefix, array(
+  'parent'      => 'fields',
+  'title'       => 'Link',
+  'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=link" target="_blank">Field: link</a>',
+  'fields'      => array(
+
+    array(
+      'id'    => 'opt-link-1',
+      'type'  => 'link',
+      'title' => 'Link',
+    ),
+
+    array(
+      'id'       => 'opt-link-2',
+      'type'     => 'link',
+      'title'    => 'Link with default',
+      'default'  => array(
+        'url'    => 'http://codestarframework.com/',
+        'text'   => 'Codestar Framework',
+        'target' => '_blank'
+      ),
+    ),
+
+  )
+) );
+
+//
 // Field: date
 //
 CSF::createSection( $prefix, array(
@@ -2797,6 +2845,162 @@ CSF::createSection( $prefix, array(
 ) );
 
 //
+// Field: datetime
+//
+CSF::createSection( $prefix, array(
+  'parent'      => 'fields',
+  'title'       => 'Date and Time',
+  'description' => 'Visit documentation for more details on this field: <a href="http://codestarframework.com/documentation/#/fields?id=date-time" target="_blank">Field: datetime</a>',
+  'fields'      => array(
+
+    array(
+      'id'    => 'opt-datetime-1',
+      'type'  => 'datetime',
+      'title' => 'Date',
+    ),
+
+    array(
+      'id'       => 'opt-datetime-2',
+      'type'     => 'datetime',
+      'title'    => 'Date',
+      'subtitle' => 'Human-friendly Dates',
+      'settings' => array(
+        'altFormat'  => 'F j, Y',
+        'dateFormat' => 'Y-m-d',
+      ),
+    ),
+
+    array(
+      'id'       => 'opt-datetime-3',
+      'type'     => 'datetime',
+      'title'    => 'Date',
+      'subtitle' => 'Start week on Monday',
+      'settings' => array(
+        'locale' => array(
+          'firstDayOfWeek' => 1,
+        ),
+      ),
+    ),
+
+    array(
+      'id'       => 'opt-datetime-4',
+      'type'     => 'datetime',
+      'title'    => 'Date and Time',
+      'subtitle' => 'Date and Time Both',
+      'settings' => array(
+        'enableTime' => true,
+        'dateFormat' => 'Y-m-d H:i',
+      ),
+    ),
+
+    array(
+      'id'       => 'opt-datetime-5',
+      'type'     => 'datetime',
+      'title'    => 'Time',
+      'subtitle' => 'Only Time',
+      'settings' => array(
+        'noCalendar' => true,
+        'enableTime' => true,
+      ),
+    ),
+
+    array(
+      'id'       => 'opt-datetime-6',
+      'type'     => 'datetime',
+      'title'    => 'Time',
+      'subtitle' => '24-hour Time without PM:AM',
+      'settings' => array(
+        'noCalendar' => true,
+        'enableTime' => true,
+        'dateFormat' => 'H:i',
+        'time_24hr'  => true,
+      ),
+    ),
+
+    array(
+      'id'       => 'opt-datetime-7',
+      'type'     => 'datetime',
+      'title'    => 'Date Range',
+      'subtitle' => 'Range Mode',
+      'settings' => array(
+        'mode' => 'range',
+      ),
+    ),
+
+    array(
+      'id'       => 'opt-datetime-8',
+      'type'     => 'datetime',
+      'title'    => 'Date From - To',
+      'subtitle' => 'Date with "From" and "To"',
+      'from_to'  => true,
+    ),
+
+    array(
+      'id'        => 'opt-datetime-9',
+      'type'      => 'datetime',
+      'title'     => 'Date Begin - End',
+      'subtitle'  => 'Date with "Begin" and "End" Custom Text',
+      'from_to'   => true,
+      'text_from' => 'Begin',
+      'text_to'   => 'End',
+    ),
+
+    array(
+      'id'       => 'opt-datetime-10',
+      'type'     => 'datetime',
+      'title'    => 'Date',
+      'subtitle' => 'Localize Example (Spanish)',
+      'settings' => array(
+        'locale' => array(
+          'time_24hr' => true,
+          'firstDayOfWeek' => 1,
+          'weekdays' => array(
+            'shorthand' => array( 'Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb' ),
+            'longhand'  => array(
+              'Domingo',
+              'Lunes',
+              'Martes',
+              'Miércoles',
+              'Jueves',
+              'Viernes',
+              'Sábado',
+            ),
+          ),
+          'months' => array(
+            'shortland' => array( 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ),
+            'longhand' => array(
+              'Enero',
+              'Febrero',
+              'Marzo',
+              'Abril',
+              'Mayo',
+              'Junio',
+              'Julio',
+              'Agosto',
+              'Septiembre',
+              'Octubre',
+              'Noviembre',
+              'Diciembre',
+            ),
+          ),
+        ),
+      ),
+    ),
+
+    array(
+      'id'       => 'opt-datetime-11',
+      'type'     => 'datetime',
+      'title'    => 'Date',
+      'subtitle' => 'Ready-Only Input',
+      'settings' => array(
+        'allowInput'  => false,
+      ),
+    ),
+
+  )
+) );
+
+//
 // Field: image_select
 //
 CSF::createSection( $prefix, array(
@@ -2810,10 +3014,9 @@ CSF::createSection( $prefix, array(
       'type'    => 'image_select',
       'title'   => 'Image Select',
       'options' => array(
-        'opt-1' => 'http://codestarframework.com/assets/images/placeholder/150x125-2ecc71.gif',
-        'opt-2' => 'http://codestarframework.com/assets/images/placeholder/150x125-e74c3c.gif',
-        'opt-3' => 'http://codestarframework.com/assets/images/placeholder/150x125-ffbc00.gif',
-        'opt-4' => 'http://codestarframework.com/assets/images/placeholder/150x125-3498db.gif',
+        'opt-1' => 'http://codestarframework.com/assets/images/placeholder/80x80-e74c3c.gif',
+        'opt-2' => 'http://codestarframework.com/assets/images/placeholder/80x80-ffbc00.gif',
+        'opt-3' => 'http://codestarframework.com/assets/images/placeholder/80x80-3498db.gif',
       ),
     ),
 
@@ -2825,12 +3028,8 @@ CSF::createSection( $prefix, array(
         'opt-1' => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
         'opt-2' => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
         'opt-3' => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
-        'opt-4' => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
-        'opt-5' => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
-        'opt-6' => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
-        'opt-7' => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
       ),
-      'default' => 'opt-4'
+      'default' => 'opt-2'
     ),
 
     array(
@@ -2842,7 +3041,6 @@ CSF::createSection( $prefix, array(
         'opt-1'  => 'http://codestarframework.com/assets/images/placeholder/80x80-e74c3c.gif',
         'opt-2'  => 'http://codestarframework.com/assets/images/placeholder/80x80-ffbc00.gif',
         'opt-3'  => 'http://codestarframework.com/assets/images/placeholder/80x80-3498db.gif',
-        'opt-4'  => 'http://codestarframework.com/assets/images/placeholder/80x80-2ecc71.gif',
       ),
     ),
 
@@ -2860,8 +3058,23 @@ CSF::createSection( $prefix, array(
         'opt-6'  => 'http://codestarframework.com/assets/images/placeholder/80x80-2ecc71.gif',
         'opt-7'  => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
         'opt-8'  => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
+        'opt-9'  => 'http://codestarframework.com/assets/images/placeholder/80x80-2c3e50.gif',
       ),
       'default'  => array( 'opt-3', 'opt-4', 'opt-5', 'opt-6' )
+    ),
+
+    array(
+      'id'      => 'opt-image-select-5',
+      'type'    => 'image_select',
+      'title'   => 'Image Select inline style',
+      'inline'  => true,
+      'options' => array(
+        'opt-1' => 'http://codestarframework.com/assets/images/placeholder/80x80-e74c3c.gif',
+        'opt-2' => 'http://codestarframework.com/assets/images/placeholder/80x80-ffbc00.gif',
+        'opt-3' => 'http://codestarframework.com/assets/images/placeholder/80x80-3498db.gif',
+        'opt-4' => 'http://codestarframework.com/assets/images/placeholder/80x80-2ecc71.gif',
+      ),
+      'default' => 'opt-1'
     ),
 
   )
@@ -3232,6 +3445,44 @@ CSF::createSection( $prefix, array(
       'dependency' => array( 'opt-nested-select-1|opt-nested-select-2|opt-nested-select-3', 'any|==|==', 'black,white|large|hello' ),
     ),
 
+    array(
+      'type'    => 'subheading',
+      'content' => 'Contains Dependencies',
+    ),
+
+    array(
+      'id'       => 'opt-depend-checkbox-1',
+      'type'     => 'checkbox',
+      'title'    => 'Select a color or more.',
+      'inline'   => true,
+      'options'  => array(
+        'blue'   => 'Blue',
+        'yellow' => 'Yellow',
+        'green'  => 'Green',
+      ),
+    ),
+
+    array(
+      'type'       => 'notice',
+      'style'      => 'info',
+      'content'    => 'Selected (blue) color.',
+      'dependency' => array( 'opt-depend-checkbox-1', 'contains', 'blue' ),
+    ),
+
+    array(
+      'type'       => 'notice',
+      'style'      => 'warning',
+      'content'    => 'Selected (yellow) color.',
+      'dependency' => array( 'opt-depend-checkbox-1', 'contains', 'yellow' ),
+    ),
+
+    array(
+      'type'       => 'notice',
+      'style'      => 'success',
+      'content'    => 'Selected (green) color.',
+      'dependency' => array( 'opt-depend-checkbox-1', 'contains', 'green' ),
+    ),
+
   )
 ) );
 
@@ -3400,7 +3651,7 @@ CSF::createSection( $prefix, array(
 //
 CSF::createSection( $prefix, array(
   'title'    => 'CSF - Reset & Backup',
-  'priority' => 6,
+  'priority' => 3,
   'fields'   => array(
 
     array(

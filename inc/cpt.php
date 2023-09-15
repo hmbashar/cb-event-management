@@ -11,7 +11,7 @@ function cbem_register_custom_post_types() {
         'public' => false,
         'has_archive' => true,
         'menu_icon' => 'dashicons-businessman',
-        'supports' => array('title', 'thumbnail', 'editor', 'post-attributes'),
+        'supports' => array('title', 'thumbnail', 'editor', 'page-attributes'),
         'show_ui' => true, // Show in admin UI
     ));
 
@@ -24,7 +24,7 @@ function cbem_register_custom_post_types() {
         'public' => true,
         'has_archive' => true,
         'menu_icon' => 'dashicons-microphone',
-        'supports' => array('title', 'thumbnail', 'editor', 'post-attributes'),
+        'supports' => array('title', 'thumbnail', 'editor', 'page-attributes'),
         'show_ui' => true, // Show in admin UI
     ));
 
@@ -37,7 +37,7 @@ function cbem_register_custom_post_types() {
         'public' => false,
         'has_archive' => true,
         'menu_icon' => 'dashicons-id-alt',
-        'supports' => array('title', 'thumbnail', 'editor', 'post-attributes'),
+        'supports' => array('title', 'thumbnail', 'editor', 'page-attributes'),
         'show_ui' => true, // Show in admin UI
     ));
 
@@ -50,7 +50,7 @@ function cbem_register_custom_post_types() {
         'public' => true,
         'has_archive' => true,
         'menu_icon' => 'dashicons-clock',
-        'supports' => array('title', 'editor', 'post-attributes'),
+        'supports' => array('title', 'editor', 'page-attributes'),
         'show_ui' => true, // Show in admin UI
     ));
 }
