@@ -120,7 +120,6 @@ if (class_exists('CSF')) {
     // Set a unique slug-like ID for person
     $prefix = 'cbem_person_metabox';
 
-    //
     // Create a metabox
     CSF::createMetabox(
         $prefix,
@@ -155,7 +154,55 @@ if (class_exists('CSF')) {
                     'id' => 'social_profiles',
                     'type' => 'group',
                     'title' => 'Social Profiles',
-                    'button_title' => 'Add Person',
+                    'button_title' => 'Add Social Profile',
+                    'fields' => array(
+
+                        //icon
+                        [
+                            'id' => 'icon',
+                            'type' => 'icon',
+                            'title' => 'Icon',
+                        ],
+
+                        //link
+                        [
+                            'id' => 'link',
+                            'type' => 'link',
+                            'title' => 'Link',
+                        ],
+                    )
+                ),
+
+            )
+        )
+    );
+
+    
+    // Set a unique slug-like ID for speaker
+    $prefix = 'cbem_speaker_metabox';
+
+    // Create a metabox
+    CSF::createMetabox(
+        $prefix,
+        array(
+            'title' => 'Options',
+            'post_type' => 'speaker',
+            'data_type' => 'unserialize',
+        )
+    );
+
+    //
+    // Create a section
+    CSF::createSection(
+        $prefix,
+        array(
+            'fields' => array(
+                // social profiles
+                array(
+                    'id' => 'social_profiles',
+                    'type' => 'group',
+                    'title' => 'Social Profiles',
+                    'button_title' => 'Add Social Profile',
                     'fields' => array(
 
                         //icon
