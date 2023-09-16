@@ -17,8 +17,8 @@ function cbem_enqueue_styles_and_scripts() {
     wp_enqueue_style('cbem-stylesheet', plugins_url('assets/css/style.css', __FILE__));
     
     // Enqueue your JavaScript file
-    wp_enqueue_script('cbem-script', plugins_url('assets/js/script.js', __FILE__), array('jquery'), '1.0', true);
-    
+    wp_enqueue_script('cbem-script', plugins_url('assets/js/main.js', __FILE__), array('jquery'), '1.0', true);
+
     wp_enqueue_script('tailwindcss', 'https://cdn.tailwindcss.com', array('jquery'), '3.3.3', false);
 
 }
