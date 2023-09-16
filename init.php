@@ -14,10 +14,11 @@ Prefix: cbem_
 // Enqueue your styles and scripts
 function cbem_enqueue_styles_and_scripts() {
     // Enqueue your stylesheet
-    wp_enqueue_style('cbem-stylesheet', plugins_url('css/style.css', __FILE__));
+    wp_enqueue_style('cbem-stylesheet', plugins_url('assets/css/style.css', __FILE__));
     
     // Enqueue your JavaScript file
-    //wp_enqueue_script('cbem-script', plugins_url('js/script.js', __FILE__), array('jquery'), '1.0', true);
+    wp_enqueue_script('cbem-script', plugins_url('assets/js/script.js', __FILE__), array('jquery'), '1.0', true);
+    
     wp_enqueue_script('tailwindcss', 'https://cdn.tailwindcss.com', array('jquery'), '3.3.3', false);
 
 }
@@ -61,3 +62,4 @@ require_once(plugin_dir_path(__FILE__) . 'inc/csf/codestar-framework.php');
 
 require_once(plugin_dir_path(__FILE__) . 'inc/metabox.php'); 
 require_once(plugin_dir_path(__FILE__) . 'inc/functions.php'); 
+require_once(plugin_dir_path(__FILE__) . 'inc/shortcode.php');
