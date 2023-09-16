@@ -22,13 +22,6 @@ function cbem_get_sponsor_details() {
     $id = $_POST['id'];
     $post = get_post($id);
 
-
-
-    $response = array(
-        'post' => $post,
-    );
-
-
-    echo json_encode($response);
+    echo json_encode($post);
     die();
 }
