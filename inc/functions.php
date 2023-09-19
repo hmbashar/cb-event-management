@@ -4,9 +4,11 @@
 
 function cbem_elementor_widgets($widgets_manager) {
 
-    include_once('elementor/widgets.php');
+    include_once('elementor/sponsors.php');
+    include_once('elementor/speakers.php');
 
     $widgets_manager->register(new CBEM_Sponsors());
+    $widgets_manager->register(new CBEM_Speakers());
 
 }
 
