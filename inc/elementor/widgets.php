@@ -9,12 +9,12 @@ class CBEM_Sponsors extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return esc_html__('CBEM Sponsors', 'elementor-addon');
+        return esc_html__('CBEM Sponsors', 'cbem');
     }
 
     public function get_icon()
     {
-        return 'eicon-code';
+        return 'eicon-person';
     }
 
     public function get_categories()
@@ -24,7 +24,7 @@ class CBEM_Sponsors extends \Elementor\Widget_Base
 
     public function get_keywords()
     {
-        return ['hello', 'world'];
+        return ['sponsor', 'event', 'cbem'];
     }
 
     protected function render()

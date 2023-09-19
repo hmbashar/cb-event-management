@@ -24,7 +24,7 @@ function cbem_register_custom_post_types() {
         'public' => true,
         'has_archive' => true,
         'menu_icon' => 'dashicons-microphone',
-        'supports' => array('title', 'thumbnail', 'editor', 'page-attributes'),
+        'supports' => array('title', 'thumbnail', 'editor', 'page-attributes', 'comments'),
         'show_ui' => true, // Show in admin UI
     ));
 
