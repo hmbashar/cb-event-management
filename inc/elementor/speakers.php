@@ -37,9 +37,27 @@ class CBEM_Speakers extends \Elementor\Widget_Base
                 // 'orderby'   => 'menu_order'
             )
         );
+        
+
+        $speaker_categories = get_terms(
+            array(
+                'taxonomy' => 'speaker_cat',
+                'hide_empty' => true,
+            )
+        );
+
         ?>
 
-        <div class="flex mx-4 justify-center">
+
+        <div class="flex">
+            <?php foreach ($speaker_categories as $speaker_category) : ?>
+                <div class="px-4 w-1/4">
+                    <button  data-ajax-url="<?php echo admin_url('admin-ajax.php');?>" class="cbem-speaker-category-btn font-bold text-xl" data-id="<?php echo $speaker_category->term_id; ?>"><?php echo $speaker_category->name; ?></button>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <div class="flex mx-4 justify-center" id="speakers">
 
             <?php
             if ($speakers->have_posts()):
@@ -49,11 +67,12 @@ class CBEM_Speakers extends \Elementor\Widget_Base
                     ?>
 
                     <div class="px-4 w-1/4">
-                        <div data-ajax-url="<?php echo admin_url('admin-ajax.php');?>" class="cbem-sponsor-logo-wrapper" data-id="<?php echo get_the_ID(); ?>">
-                            <div class="cbem-sponsor-logo">
+                        <div class="cbem-sponsor-logo-wrapper">
+                            <div class="cbem-speaker-img">
                                 <?php the_post_thumbnail('large'); ?>
                             </div>
                         </div>
+                        <h2><?php the_title(); ?></h2>
                     </div>
 
                     <?php
