@@ -30,24 +30,18 @@ jQuery(document).ready(function($) {
 
 
 
-    $('.cbem-sponsor-logo-wrapper').on('click', function() {
+    $('.cbem-speaker-category-btn').on('click', function() {
         //ajax call
         $.ajax({
             url:$(this).data("ajax-url"),
             type: "POST",
             data: {
-                action: "cbem_get_sponsor_details",
+                action: "cbem_get_speakers_categorized",
                 id:$(this).data("id")
             },
             success: function(response) {
 
-                // let data = JSON.parse(response);
-
-                // $('#cbem-popup-content').html('<div class="sponsor-popup-details"><h3 class="font-bold text-3xl mb-2">'+data.post_title+'</h3><p>'+data.post_content+'</p></div>');
-
-                $('#cbem-popup-content').html(response);
-
-                $('.cbem-popup-wrapper').fadeIn();
+               console.log(response);
             }
         });
     });

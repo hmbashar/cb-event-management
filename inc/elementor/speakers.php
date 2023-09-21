@@ -67,7 +67,7 @@ class CBEM_Speakers extends \Elementor\Widget_Base
                     ?>
 
                     <div class="px-4 w-1/4">
-                        <div class="cbem-sponsor-logo-wrapper">
+                        <div class="cbem-speaker-logo-wrapper">
                             <div class="cbem-speaker-img">
                                 <?php the_post_thumbnail('large'); ?>
                             </div>

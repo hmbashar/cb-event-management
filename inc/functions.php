@@ -1,8 +1,9 @@
-<?php 
+<?php
 
 //elememtor widget register
 
-function cbem_elementor_widgets($widgets_manager) {
+function cbem_elementor_widgets($widgets_manager)
+{
 
     include_once('elementor/sponsors.php');
     include_once('elementor/speakers.php');
@@ -20,14 +21,15 @@ add_action('elementor/widgets/register', 'cbem_elementor_widgets');
 add_action('wp_ajax_cbem_get_sponsor_details', 'cbem_get_sponsor_details');
 add_action('WP_ajax_nopriv_cbem_get_sponsor_details', 'cbem_get_sponsor_details');
 
-function cbem_get_sponsor_details() {
+function cbem_get_sponsor_details()
+{
     $id = $_POST['id'];
     $post = get_post($id);
 
 
     $html = '<div class="sponsor-details">
-        <h3 class="sponsor-details-title font-bold text-3xl mb-2">'.$post->post_title.'</h3>
-        <div class="sponsor-details-content">'.wpautop($post->post_content).'</div>
+        <h3 class="sponsor-details-title font-bold text-3xl mb-2">' . $post->post_title . '</h3>
+        <div class="sponsor-details-content">' . wpautop($post->post_content) . '</div>
     </div>';
 
     echo $html;
@@ -36,7 +38,8 @@ function cbem_get_sponsor_details() {
 
 
 //single template for custom post type
-function cbem_template_for_speaker_single($template) {
+function cbem_template_for_speaker_single($template)
+{
     global $post;
 
     // Check if the post type is 'speaker'
@@ -55,3 +58,49 @@ function cbem_template_for_speaker_single($template) {
 }
 
 add_filter('single_template', 'cbem_template_for_speaker_single');
+
+
+//ajax enqueue for speaker categories
+add_action('wp_ajax_cbem_get_speakers_categorized', 'cbem_get_speakers_categories');
+add_action('wp_ajax_nopriv_cbem_get_speakers_categorized', 'cbem_get_speakers_categories');
+
+
+
+function cbem_get_speakers_categories()
+{
+    $term_id = $_POST['term_id'];
+
+    $sp_tax_post = new WP_Query(
+        array(
+            'post_type' => 'speaker',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'speaker_cat',
+                    'field' => 'term_id',
+                    'terms' => $term_id
+                )
+            )
+        )
+    );
+
+    $html = '';
+
+    if($sp_tax_post->have_posts()) {
+        while($sp_tax_post->have_posts()) {
+            $sp_tax_post->the_post();
+            $html.= '<div class="px-4 w-1/4">
+                        <div class="cbem-speaker-logo-wrapper">
+                            <div class="cbem-speaker-img">
+                                '.get_the_post_thumbnail(get_the_ID(), 'large').'
+                            </div>
+                        </div>
+                        <h2>'. get_the_title().'</h2>
+                    </div>';
+        }
+    }
+
+    wp_reset_query();
+
+    echo $html;
+    die();
+}
