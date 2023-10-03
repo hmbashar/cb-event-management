@@ -104,3 +104,15 @@ function cbem_get_speakers_categories()
     echo $html;
     die();
 }
+
+
+function cbem_qr_codewc_email_before_order_table($order, $sent_to_admin, $plain_text, $email) {
+    if ($email->id === 'customer_completed_order') { // Replace 'customer_completed_order' with the email ID you want to target
+        // Customize your email message here
+        $custom_message = '<img width="150" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='.get_page_link(94).'/?order_id='.$order->id.'"/>';
+
+        // Output the custom message
+        echo '<p>' . $custom_message . '</p>';
+    }
+}
+add_action('woocommerce_email_before_order_table', 'cbem_qr_codewc_email_before_order_table', 10, 4);

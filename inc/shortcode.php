@@ -63,3 +63,55 @@ function cbem_schedule() {
 
     return '<pre>' . print_r($schedul_array, true) . '</pre>';
 }
+
+
+// shortcode for checkin
+function cbem_checkin_shortcode() {
+
+    $html = '';
+
+    // checked order id is available
+    if(array_key_exists('order_id', $_GET)) {
+        $order_id = $_GET['order_id'];
+
+        // get order
+        //$order = new WC_Order($order_id);
+        $order = wc_get_order($order_id);
+
+        $checked_in = get_post_meta($order_id, 'cbem_checked_in', true);
+
+        if($checked_in != 'yes') {
+            
+
+            // Get the order creation date
+            $order_date = $order->get_date_created();
+
+            // Define the desired time zone offset (+06)
+            $time_zone_offset = '+06:00';
+            // Format the date with the desired time zone offset
+            $formatted_order_date = date_i18n('Y-m-d H:i:s', strtotime($order_date->date('Y-m-d H:i:s') . $time_zone_offset));
+
+            $html .= '<ul>
+
+            <li>Name: ' . $order->get_billing_first_name() . ' ' . $order->get_billing_last_name() . '</li>
+            <li>Phone: ' . $order->get_billing_phone() . '</li>
+            <li>Email: ' . $order->get_billing_email() . '</li>
+            <li>Address: ' . $order->get_billing_address_1() . '</li> 
+            <li>Purchase Date: ' . $formatted_order_date . '</li>           
+            </ul>';
+
+            $html .= '<button class="cbem-checkin-btn" data-order-id="' . $order_id . '">Check In</button>';
+        }else {
+            $html .= 'Already Checked In';
+        }
+
+
+    }else {
+        $order_id = '';
+    }
+
+    
+
+    return $html;
+}
+add_shortcode('cbem-checkin', 'cbem_checkin_shortcode');
