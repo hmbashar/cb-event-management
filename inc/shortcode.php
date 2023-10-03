@@ -21,3 +21,45 @@ function cbem_speaker_popup()
 
     <?php
 }
+
+// shortcode for schedule
+add_shortcode('cbem-schedule', 'cbem_schedule');
+
+function cbem_schedule() {
+    $schedul = new WP_Query(array(
+        'post_type' => 'schedule',
+        'posts_per_page' => -1
+    ));
+
+    $schedul_array = [];
+    if ($schedul->have_posts()) {
+        while ($schedul->have_posts()) {
+            $schedul->the_post();
+
+            $date = get_post_meta(get_the_ID(), 'date', true);
+            $start_time = get_post_meta(get_the_ID(), 'start_time', true);
+
+            $unix_time = strtotime($date.' '.$start_time);
+
+            $schedul_array[$unix_time] = get_the_ID();
+        }
+    }
+
+    wp_reset_postdata();
+
+    ksort($schedul_array);
+
+    $query_ids = [];
+    foreach ($schedul_array as $item) {
+        $query_ids[] = $item;
+    }
+
+
+    $q = new WP_Query(array(
+        'post_type' => 'schedule',
+        'post__in' => $query_ids,
+        'posts_per_page' => -1
+    ));
+
+    return '<pre>' . print_r($schedul_array, true) . '</pre>';
+}
