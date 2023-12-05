@@ -48,7 +48,6 @@ class CBEM_Speakers extends \Elementor\Widget_Base
 
         ?>
 
-
         <div class="flex">
             <?php foreach ($speaker_categories as $speaker_category) : ?>
                 <div class="px-4 w-1/4">
@@ -63,9 +62,7 @@ class CBEM_Speakers extends \Elementor\Widget_Base
             if ($speakers->have_posts()):
                 while ($speakers->have_posts()):
                     $speakers->the_post();
-
                     ?>
-
                     <div class="px-4 w-1/4">
                         <div class="cbem-speaker-logo-wrapper">
                             <div class="cbem-speaker-img">
