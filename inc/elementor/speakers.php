@@ -57,7 +57,7 @@ class CBEM_Speakers extends \Elementor\Widget_Base
         </div>
 
         <div class="flex mx-4 justify-center" id="speakers">
-
+        
             <?php
             if ($speakers->have_posts()):
                 while ($speakers->have_posts()):
